@@ -75,6 +75,16 @@ if [ "$OS" = "Ubuntu" ]; then
 		supported=1
 	elif [ "$VER" = "18.04" ]; then
 		supported=1
+	elif [ "$VER" = "18.10" ]; then
+		echo "Using Ubuntu 18.04 Installation scripts. \nIf the installation fails contact NadekoBot support."
+		sleep 5
+		supported=1
+	elif [ "$VER" = "19.04" ]; then
+		supported=1
+	elif [ "$VER" = "19.10" ]; then
+		echo "Using Ubuntu 19.04 Installation scripts. \nIf the installation fails contact NadekoBot support."
+		sleep 5
+		supported=1
 	else
 		supported=0
 	fi
@@ -225,17 +235,21 @@ read -n 1 -s -p "Press any key to continue..."
 	sudo chmod a+rx /usr/local/bin/youtube-dl
 	# remove dotnet temp
 	sudo rm -f packages-microsoft-prod.deb
-	elif [ "$VER" = "18.04" ]; then
+	elif [ "$VER" = "18.04" ] && [ "$VER" = "18.10" ]; then
 	echo ""
 	echo "Preparing..."
 	sudo apt-get update
-	sudo apt-get install software-properties-common apt-transport-https curl -y
-	wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
-	sudo mv -f microsoft.asc.gpg /etc/apt/trusted.gpg.d/
-	wget -q https://packages.microsoft.com/config/ubuntu/18.04/prod.list 
-	sudo mv -f prod.list /etc/apt/sources.list.d/microsoft-prod.list
-	sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
-	sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+	wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+	sudo dpkg -i packages-microsoft-prod.deb
+	sudo add-apt-repository universe
+	sudo apt-get install software-properties-common apt-transport-https curl gpg -y
+	#Backup for manual installation.
+	#wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+	#sudo mv -f microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+	#wget -q https://packages.microsoft.com/config/ubuntu/18.04/prod.list 
+	#sudo mv -f prod.list /etc/apt/sources.list.d/microsoft-prod.list
+	#sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+	#sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
 	sudo apt-get update
 	sudo apt-get upgrade -y
 	sudo apt-get dist-upgrade -y
@@ -247,6 +261,35 @@ read -n 1 -s -p "Press any key to continue..."
 	sudo apt-get install libopus0 opus-tools libopus-dev libsodium-dev ffmpeg tmux python python3-pip redis-server -y
 	sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
 	sudo chmod a+rx /usr/local/bin/youtube-dl
+	# remove dotnet temp
+	sudo rm -f packages-microsoft-prod.deb
+	elif [ "$VER" = "19.04" ] && [ "$VER" = "19.10" ]; then
+	echo ""
+	echo "Preparing..."
+	sudo apt-get update
+	wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+	sudo dpkg -i packages-microsoft-prod.deb
+	sudo apt-get install software-properties-common apt-transport-https curl gpg -y
+	#Backup for manual installation.
+	#wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+	#sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+	#wget -q https://packages.microsoft.com/config/ubuntu/19.04/prod.list
+	#sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+	#sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+	#sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+	sudo apt-get update
+	sudo apt-get upgrade -y
+	sudo apt-get dist-upgrade -y
+	echo "Installing Git..."
+	sudo apt-get install git -y
+	echo "Installing .NET Core..."
+	sudo apt-get install dotnet-sdk-2.1 -y
+	echo "Installing prerequisites..."
+	sudo apt-get install libopus0 opus-tools libopus-dev libsodium-dev ffmpeg tmux python python3-pip redis-server -y
+	sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+	sudo chmod a+rx /usr/local/bin/youtube-dl
+	# remove dotnet temp
+	sudo rm -f packages-microsoft-prod.deb
 	fi
 elif [ "$OS" = "Debian" ]; then
 	if [ "$SVER" = "8" ]; then
