@@ -1,6 +1,6 @@
 #!/bin/sh
 echo ""
-echo "NadekoBot Installer started."
+echo "TxantxiBot Installer started."
 
 if hash git 1>/dev/null 2>&1
 then
@@ -32,7 +32,7 @@ cd "$tempdir"
 
 echo ""
 echo "Downloading NadekoBot, please wait."
-git clone -b 1.9 --recursive --depth 1 https://gitlab.com/Kwoth/NadekoBot
+git clone -b 1.9 --recursive --depth 1 https://gitlab.com/iEzCnF/NadekoBot
 echo ""
 echo "NadekoBot downloaded."
 
