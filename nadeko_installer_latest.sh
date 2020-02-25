@@ -1,6 +1,6 @@
-#!/bin/sh
+-#!/bin/sh
 echo ""
-echo "NadekoBot Installer started."
+echo "NadekoBot Installer startedxx."
 
 if hash git 1>/dev/null 2>&1
 then
@@ -32,7 +32,7 @@ cd "$tempdir"
 
 echo ""
 echo "Downloading NadekoBot, please wait."
-git clone -b omegaservernw-1.9-patch-96131 --recursive --depth 1 https://gitlab.com/omegaservernw/nadekobot.git
+git clone -b dev --recursive --depth 1 https://gitlab.com/omegaservernw/nadekobot.git
 echo ""
 echo "NadekoBot downloaded."
 
