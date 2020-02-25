@@ -1,7 +1,7 @@
 #!/bin/sh
 echo ""
-echo "NadekoBot 1.9+"
-echo "Mirai was here."
+echo "TxantxiBot 1.9+"
+echo "FERNI was here."
 root=$(pwd)
 youtube-dl -U
 
