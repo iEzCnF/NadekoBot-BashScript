@@ -1,6 +1,6 @@
 #!/bin/sh
 echo ""
-echo "TxantxiBot Installer started."
+echo "TxantxiBot FM Installer started."
 
 if hash git 1>/dev/null 2>&1
 then
