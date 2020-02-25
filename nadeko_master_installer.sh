@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Welcome to NadekoBot."
+echo "Welcome to TxantxiBot."
 root=$(pwd)
 echo ""
 choice=9
