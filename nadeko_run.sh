@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "NadekoBot 1.0"
-echo "Mirai was here."
+echo "Txantxiku was here."
 
 if hash dotnet 2>/dev/null
 then
